@@ -1,0 +1,19 @@
+{
+  "name": "cypress-testing",
+  "version": "1.0.0",
+  "description": "\"This is an example app used to showcase Cypress testing. For a full reference of the documentation, go to https://docs.cypress.io",
+  "main": "index.js",
+  "files": [
+    "app",
+    "cypress"
+  ],
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "start": "node scripts/server.js"
+  },
+  "dependencies": {
+    "cypress": "^12.17.1",
+    "express": "^4.18.2"
+  }
+}
