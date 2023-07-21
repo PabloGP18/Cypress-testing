@@ -1,6 +1,9 @@
 // Differentiate between adding and overwriting commands
 // Understand when to use custom commands vs. using existing commands
 
+// In summary, he test cases inside the context demonstrate the usage of custom Cypress commands 'setLocalStorage' and 'getLocalStorage' to interact with the local storage.
+// The last test case shows how to overwrite the 'type' command to replace sensitive text with asterisks (*) when simulating user input.
+
 // Define a variable to store a sample token for testing
 const token = 'abcd123'
 
