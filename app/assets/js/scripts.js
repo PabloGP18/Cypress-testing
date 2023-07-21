@@ -12,13 +12,16 @@ $(() => {
 
   let context
 
-  context = typeof canvas !== 'undefined' && canvas !== null ? canvas.getContext('2d') : 0
+  context =
+    typeof canvas !== 'undefined' && canvas !== null
+      ? canvas.getContext('2d')
+      : 0
 
   $('#action-canvas').on('click', (e) => {
     draw(e)
   })
 
-  function draw (e) {
+  function draw(e) {
     let pos = getMousePos(canvas, e)
     let posx = pos.x
     let posy = pos.y
@@ -29,12 +32,12 @@ $(() => {
     context.fill()
   }
 
-  function getMousePos (canvas, evt) {
+  function getMousePos(canvas, evt) {
     let rect = canvas.getBoundingClientRect()
 
     return {
       x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
+      y: evt.clientY - rect.top
     }
   }
   // end -----------------------------------------
@@ -43,6 +46,10 @@ $(() => {
   $('.action-div').on('dblclick', (e) => {
     $('.action-input-hidden').removeClass('hidden').focus()
     $(e.currentTarget).addClass('hidden')
+  })
+
+  $('.dropdown-toggle').hover(() => {
+    $('li.active').addClass('open')
   })
 
   // listen to contextmenu to demonstrate logic on right click command
@@ -68,8 +75,8 @@ $(() => {
     e.preventDefault()
 
     $('<p>Your form has been submitted!</p>')
-    .insertAfter(e.currentTarget)
-    .css('color', '#20B520')
+      .insertAfter(e.currentTarget)
+      .css('color', '#20B520')
   })
 
   // hide this div so we can invoke show later
@@ -120,43 +127,43 @@ $(() => {
   // we fetch all data from this REST json backend
   const root = 'https://jsonplaceholder.cypress.io'
 
-  function getComment () {
+  function getComment() {
     $.ajax({
       url: `${root}/comments/1`,
-      method: 'GET',
+      method: 'GET'
     }).then((data) => {
       $('.network-comment').text(data.body)
     })
   }
 
-  function postComment () {
+  function postComment() {
     $.ajax({
       url: `${root}/comments`,
       method: 'POST',
       data: {
         name: 'Using POST in cy.intercept()',
         email: 'hello@cypress.io',
-        body: 'You can change the method used for cy.intercept() to be GET, POST, PUT, PATCH, or DELETE',
-      },
+        body: 'You can change the method used for cy.intercept() to be GET, POST, PUT, PATCH, or DELETE'
+      }
     }).then(() => {
       $('.network-post-comment').text('POST successful!')
     })
   }
 
-  function putComment () {
+  function putComment() {
     $.ajax({
       url: `${root}/comments/1`,
       method: 'PUT',
       data: {
         name: 'Using PUT in cy.intercept()',
         email: 'hello@cypress.io',
-        body: 'You can change the method used for cy.intercept() to be GET, POST, PUT, PATCH, or DELETE',
+        body: 'You can change the method used for cy.intercept() to be GET, POST, PUT, PATCH, or DELETE'
       },
       statusCode: {
-        404 (data) {
+        404(data) {
           $('.network-put-comment').text(data.responseJSON.error)
-        },
-      },
+        }
+      }
     })
   }
   // end -----------------------------------------
@@ -167,7 +174,7 @@ $(() => {
   })
 
   // populate localStorage and sessionStorage to demonstrate cy.clearLocalStorage()
-  function populateStorage () {
+  function populateStorage() {
     localStorage.setItem('prop1', 'red')
     localStorage.setItem('prop2', 'blue')
     localStorage.setItem('prop3', 'magenta')
@@ -184,7 +191,7 @@ $(() => {
   })
 
   // populate local cookie to demonstrate cy.clearCookies()
-  function setCookies () {
+  function setCookies() {
     document.cookie = 'token=123ABC'
   }
 
