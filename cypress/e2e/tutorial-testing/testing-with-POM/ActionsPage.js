@@ -1,29 +1,29 @@
 class ActionsPage {
-  header = 'h1'
-  container = '.container'
-  paragraph = 'p'
-  subheader = 'h4'
+  static header = 'h1'
+  static container = '.container'
+  static paragraph = 'p'
+  static subheader = 'h4'
 
-  visit() {
+  static visit() {
     cy.visit('http://example.cypress.io/commands/actions')
   }
 
-  checkHeaderExist() {
+  static checkHeaderExist() {
     cy.get(ActionsPage.header).should('exist')
   }
 
-  checkHeaderText(text) {
+  static checkHeaderText(text) {
     cy.get(ActionsPage.header).should('contain.text', text)
   }
 
-  checkParagraphUnderHeader(index) {
+  static checkParagraphUnderHeader(index) {
     cy.get(ActionsPage.container)
       .eq(index)
       .find(ActionsPage.paragraph)
       .should('exist')
   }
 
-  checkElementInSection(index) {
+  static checkElementInSection(index) {
     cy.get(ActionsPage.container)
       .eq(index)
       .within(() => {
@@ -32,5 +32,3 @@ class ActionsPage {
       })
   }
 }
-
-export default ActionsPage
