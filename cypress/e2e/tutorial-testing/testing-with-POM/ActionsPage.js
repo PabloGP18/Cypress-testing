@@ -32,3 +32,5 @@ class ActionsPage {
       })
   }
 }
+
+export default ActionsPage
